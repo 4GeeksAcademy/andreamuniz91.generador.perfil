@@ -28,24 +28,25 @@ function render(variables = {}) {
   // if includeCover==false then we reset the cover code without the <img> tag to make the cover transparent.
   let cover = `<div class="cover"><img src="${variables.background}" /></div>`;
   if (variables.includeCover == false) cover = "<div class='cover'></div>";
-  //variable == condicion ? "Verdadero" : "Falso"
   // reset the website body with the new html output
   document.querySelector("#widget_content").innerHTML = `<div class="widget">
             ${cover}
           <img src="${variables.avatarURL}" class="photo" />
-          <h1> ${variables.name ? variables.name : ""} ${
-    variables.lastName
-  } </h1>          <h2>Web Developer</h2>
+          <h1> ${variables.name ? variables.name : ""} ${variables.lastName ? variables.lastName : ""} </h1>         
+          <h2>Web Developer</h2>
           <h3>Miami, USA</h3>
-          <ul class="position-right">
-            <li><a href="https://twitter.com/4geeksacademy"><i class="fab fa-twitter"></i></a></li>
-            <li><a href="https://github.com/4geeksacademy"><i class="fab fa-github"></i></a></li>
-            <li><a href="https://linkedin.com/school/4geeksacademy"><i class="fab fa-linkedin"></i></a></li>
-            <li><a href="https://instagram.com/4geeksacademy"><i class="fab fa-instagram"></i></a></li>
+          <ul class="position-right">                  
+            <li><a href="${variables.twitter ? `https://twitter.com/${variables.twitter}` : ''}"><i class="fab fa-twitter"></i></a></li>
+            <li><a href="${variables.github ? `https://github.com/${variables.github}` : ''}">
+            <i class="fab fa-github"></i></a></li>           
+            <li><a href="${variables.linkedin ? `https://linkedin.com/u/${variables.linkedin}` : ''}" >
+            <i class="fab fa-linkedin"></i></a></li>            
+            <li><a href="${variables.instagram ? 'https://instagram.com/' + variables.instagram : ''}">
+            <i class="fab fa-instagram"></i></a></li>
           </ul>
         </div>
-    `;
-}
+    `;}
+
 
 /**
  * Don't change any of the lines below, here is where we do the logic for the dropdowns
